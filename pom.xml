@@ -1,58 +1,37 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	
-	<groupId>org.springframework</groupId>
-	<artifactId>gs-maven</artifactId>
-	<packaging>jar</packaging>
-	<version>0.1.0</version>
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
-	<properties>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
-	</properties>
+public class CalculatorTest {
 
-	<dependencies>
-		<!-- tag::joda[] -->
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>2.9.2</version>
-		</dependency>
-		<!-- end::joda[] -->
-		<!-- tag::junit[] -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- end::junit[] -->
-	</dependencies>
+    @Test
+    public void testAdd() {
+        Calculator calculator = new Calculator();
+        int expected = 5;
+        int actual = calculator.add(2, 3);
+        assertEquals(expected, actual);
+    }
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-shade-plugin</artifactId>
-				<version>3.2.4</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>shade</goal>
-						</goals>
-						<configuration>
-							<transformers>
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>hello.HelloWorld</mainClass>
-								</transformer>
-							</transformers>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    @Test
+    public void testSubtract() {
+        Calculator calculator = new Calculator();
+        int expected = -1;
+        int actual = calculator.subtract(3, 4);
+        assertEquals(expected, actual);
+    }
 
-</project>
+    @Test
+    public void testMultiply() {
+        Calculator calculator = new Calculator();
+        int expected = 6;
+        int actual = calculator.multiply(2, 3);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testDivide() {
+        Calculator calculator = new Calculator();
+        int expected = 2;
+        int actual = calculator.divide(6, 3);
+        assertEquals(expected, actual);
+    }
+}
