@@ -1,0 +1,27 @@
+
+import java.util.Scanner;
+
+public class SimpleLogin {
+
+    private static final String USERNAME = "user123";
+    private static final String PASSWORD = "pass456";
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter username: ");
+        String enteredUsername = scanner.nextLine();
+
+        System.out.print("Enter password: ");
+        String enteredPassword = scanner.nextLine();
+
+        if (checkCredentials(enteredUsername, enteredPassword)) {
+            System.out.println("Login successful!");
+        } else {
+            System.out.println("Invalid username or password. Login failed.");
+        }
+    }
+
+    private static boolean checkCredentials(String username, String password) {
+        return USERNAME.equals(username) && PASSWORD.equals(password);
+    }
+}
